@@ -15,10 +15,17 @@ const userSlice = createSlice({
             if(state.userData){
                 state.userData.credits = action.payload
             }
-        }
+        },
+        updateStreak: (state, action) => {
+  if (state.userData) {
+    state.userData.streak = action.payload
+  }
+},
     }
+    
 })
 
-export const {setUserData , updateCredits} = userSlice.actions
+
+export const { setUserData, updateCredits, updateStreak } = userSlice.actions
 
 export default userSlice.reducer
