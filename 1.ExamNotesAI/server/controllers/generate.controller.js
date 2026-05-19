@@ -3,7 +3,6 @@ import UserModel from "../models/user.model.js"
 import { generateGeminiResponse } from "../services/gemini.services.js"
 import { buildPrompt } from "../utils/promptBuilder.js"
  
-// Helper to get previous date string
 function getPreviousDate(dateStr) {
     const d = new Date(dateStr)
     d.setDate(d.getDate() - 1)
