@@ -3,10 +3,14 @@ import { motion } from "motion/react"
 import { FcGoogle } from "react-icons/fc";
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../utils/firebase';
-
+import axios from "axios"
+import { serverUrl } from '../App';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../redux/userSlice';
 
 function Auth() {
   
+  const dispatch = useDispatch()
 
   const handleGoogleAuth = async () => {
     
@@ -46,7 +50,7 @@ function Auth() {
         </motion.header>
 
         <main className='max-w-7xl mx-auto py-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center'>
-
+        
         <motion.div 
          initial = {{opacity: 0 , x:-60}}
         animate = {{opacity:1 , x:0}}
@@ -58,7 +62,7 @@ function Auth() {
                 Unlock Smart <br /> AI Notes
               </h1>
               <motion.button
-
+              onClick={handleGoogleAuth}
               whileHover={{
                 y:-10,
                 rotateX:8,
