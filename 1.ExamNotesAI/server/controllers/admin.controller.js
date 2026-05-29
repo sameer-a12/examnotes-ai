@@ -60,3 +60,29 @@ export const adminLogout = async (req, res) => {
   }
 };
 
+export const getStats = async (req, res) => {
+  try {
+    const totalUsers = await UserModel.countDocuments();
+    const totalNotes = await Notes.countDocuments();
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const notesToday = await Notes.countDocuments({ createdAt: { $gte: today } });
+
+    const revenueData = await UserModel.aggregate([
+      { $group: { _id: null, total: { $sum: "$totalSpent" } } },
+    ]);
+    const totalRevenue = revenueData[0]?.total || 0;
+
+    const recentUsers = await UserModel.find()
+      .sort({ createdAt: -1 })
+      .limit(5)
+      .select("name email credits role createdAt");
+
+    res.json({ totalUsers, totalNotes, notesToday, totalRevenue, recentUsers });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to fetch stats" });
+  }
+};
+
