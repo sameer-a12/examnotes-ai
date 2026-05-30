@@ -86,3 +86,14 @@ export const getStats = async (req, res) => {
   }
 };
 
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await UserModel.find()
+      .sort({ createdAt: -1 })
+      .select("name email credits role isBanned createdAt");
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch users" });
+  }
+};
+
