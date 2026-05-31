@@ -113,3 +113,18 @@ export const updateUserCredits = async (req, res) => {
   }
 };
 
+export const banUser = async (req, res) => {
+  try {
+    const { userId, isBanned } = req.body;
+    const user = await UserModel.findByIdAndUpdate(
+      userId,
+      { $set: { isBanned } },
+      { new: true }
+    );
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.json({ success: true, user });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to update ban status" });
+  }
+};
+
