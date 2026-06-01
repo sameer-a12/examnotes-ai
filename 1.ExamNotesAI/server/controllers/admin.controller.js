@@ -128,3 +128,13 @@ export const banUser = async (req, res) => {
   }
 };
 
+export const getAllNotes = async (req, res) => {
+  try {
+    const notes = await Notes.find()
+      .sort({ createdAt: -1 })
+      .populate("user", "name email");
+    res.json(notes);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch notes" });
+  }
+};
