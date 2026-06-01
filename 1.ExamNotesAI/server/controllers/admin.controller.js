@@ -138,3 +138,12 @@ export const getAllNotes = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch notes" });
   }
 };
+
+export const deleteNote = async (req, res) => {
+  try {
+    await Notes.findByIdAndDelete(req.params.noteId);
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to delete note" });
+  }
+};
