@@ -7,7 +7,7 @@ import AdminUsers from './pages/AdminUsers'
 import AdminNotes from './pages/AdminNotes'
 import Login from './pages/Login'
 
-export const serverUrl = import.meta.env.VITE_SERVER_URL;
+export const serverUrl = "https://examnotes-backend-vjow.onrender.com";
 
 function App() {
   const { adminData } = useSelector((state) => state.admin)
