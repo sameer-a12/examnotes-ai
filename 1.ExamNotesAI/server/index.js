@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 
 const allowedOrigins = [
-  process.env.CLIENT_URL,
+  "https://examnotes-client-kl18.onrender.com",
   "https://examnotes-admin.onrender.com"
 ];
 
