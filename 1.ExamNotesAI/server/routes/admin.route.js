@@ -15,7 +15,7 @@ const adminRouter = express.Router();
 
 adminRouter.post("/login", adminLogin); 
 
-adminRouter.use(isAuth, isAdmin);
+adminRouter.use(isAdmin);
 
 adminRouter.get("/stats", getStats);
 adminRouter.get("/users", getAllUsers);
