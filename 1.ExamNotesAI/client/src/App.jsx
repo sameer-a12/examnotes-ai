@@ -15,7 +15,7 @@ import axios from 'axios'
 import { setUserData } from './redux/userSlice'
 
 
-export const serverUrl = import.meta.env.VITE_SERVER_URL;
+export const serverUrl = "https://examnotes-backend-vjow.onrender.com"
 
 function App() {
   const dispatch = useDispatch();
