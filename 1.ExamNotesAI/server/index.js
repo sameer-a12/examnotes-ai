@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   process.env.CLIENT_URL,
-  process.env.CLIENT_URL_2
+  "https://examnotes-backend-vjow.onrender.com"
 ];
 
 app.use(cors({
